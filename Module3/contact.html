@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us – Kashfeet Solutions | Lahore</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --color-primary:    #2563eb;
+      --color-primary-dark:#1d4ed8;
+      --color-accent:     #10b981;
+      --color-text:       #1f2937;
+      --color-text-light: #6b7280;
+      --color-bg:         #f9fafb;
+      --color-white:      #ffffff;
+      --color-border:     #e5e7eb;
+      --spacing-sm: 1rem;
+      --spacing-md: 2rem;
+      --spacing-lg: 4rem;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Inter', system-ui, sans-serif; line-height:1.6; color:var(--color-text); background:var(--color-bg); }
+    a { color:inherit; text-decoration:none; }
+
+    .container { max-width:800px; margin:0 auto; padding:0 var(--spacing-md); }
+
+    header {
+      position:fixed; top:0; width:100%; background:var(--color-white);
+      box-shadow:0 1px 3px rgba(0,0,0,0.1); z-index:100;
+    }
+    nav { display:flex; justify-content:space-between; align-items:center; height:80px; }
+    .logo { font-size:1.5rem; font-weight:700; color:var(--color-primary); }
+    .nav-links { display:flex; gap:2.5rem; list-style:none; font-weight:500; }
+    .nav-links a:hover { color:var(--color-primary); }
+    .menu-toggle { display:none; font-size:1.8rem; cursor:pointer; }
+
+    .message {
+      position:fixed; top:90px; left:50%; transform:translateX(-50%);
+      background:#d1fae5; color:#065f46; padding:1rem 2rem; border-radius:12px;
+      border:1px solid #a7f3d0; box-shadow:0 6px 20px rgba(0,0,0,0.15);
+      z-index:2000; display:none; font-weight:500; min-width:320px; text-align:center;
+    }
+
+    section { padding:clamp(140px, 20vh, 180px) 0 6rem; }
+    h1 { font-size:2.8rem; text-align:center; margin-bottom:var(--spacing-md); }
+    form {
+      background:white; padding:2.5rem; border-radius:16px;
+      box-shadow:0 6px 25px rgba(0,0,0,0.08); border:1px solid var(--color-border);
+    }
+    label { display:block; margin-bottom:0.5rem; font-weight:500; }
+    input, textarea {
+      width:100%; padding:0.9rem; margin-bottom:1.2rem; border:1px solid var(--color-border);
+      border-radius:8px; font-size:1rem; font-family:inherit;
+    }
+    textarea { min-height:140px; resize:vertical; }
+    .btn {
+      background:var(--color-primary); color:white; border:none;
+      padding:1rem 2.2rem; border-radius:999px; font-weight:600;
+      cursor:pointer; transition:all 0.3s; display:block; margin:0 auto;
+    }
+    .btn:hover { background:var(--color-primary-dark); transform:translateY(-3px); }
+
+    footer { background:var(--color-text); color:#d1d5db; text-align:center; padding:3rem 1rem; }
+
+    @media (max-width:768px) {
+      .nav-links { display:none; position:absolute; top:80px; left:0; width:100%; background:white;
+        flex-direction:column; padding:1.5rem; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+      .nav-links.active { display:flex; }
+      .menu-toggle { display:block; }
+      section { padding-top:120px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="successMessage" class="message">Thank you! Your message has been sent. We'll get back to you soon.</div>
+
+  <header>
+    <nav class="container">
+      <div class="logo">Kashfeet</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#stats">Impact</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="menu-toggle" id="menuToggle">☰</div>
+    </nav>
+  </header>
+
+  <section>
+    <div class="container">
+      <h1>Get in Touch</h1>
+      <form id="contactForm">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" placeholder="John Doe" required/>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="example@email.com" required/>
+
+        <label for="phone">Phone / WhatsApp</label>
+        <input type="tel" id="phone" placeholder="+92 300 1234567" required/>
+
+        <label for="message">Your Message</label>
+        <textarea id="message" placeholder="How can we help you today?" required></textarea>
+
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+
+      <p style="text-align:center; margin-top:2rem; color:var(--color-text-light);">
+        Or call us directly: <a href="tel:+923001234567" style="color:var(--color-primary);">+92 300 1234567</a>
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Kashfeet Solutions. Lahore, Pakistan.<br>
+      <a href="tel:+923xxxxxxxxx">+92 300 123 4567</a> • hello@kashfeet.pk</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('menuToggle').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('active');
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const msg = document.getElementById('successMessage');
+      msg.style.display = 'block';
+
+      setTimeout(() => { msg.style.display = 'none'; }, 5000);
+
+      this.reset();
+    });
+  </script>
+</body>
+</html>

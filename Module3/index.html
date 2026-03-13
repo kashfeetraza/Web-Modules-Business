@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kashfeet Solutions – Business Growth Partner | Lahore</title>
+  <meta name="description" content="Strategic consulting, digital solutions & business growth services in Lahore, Pakistan."/>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      /* Change colors here – only one place! */
+      --color-primary:    #2563eb;
+      --color-primary-dark:#1d4ed8;
+      --color-accent:     #10b981;
+      --color-text:       #1f2937;
+      --color-text-light: #6b7280;
+      --color-bg:         #f9fafb;
+      --color-white:      #ffffff;
+      --color-border:     #e5e7eb;
+
+      --spacing-sm: 1rem;
+      --spacing-md: 2rem;
+      --spacing-lg: 4rem;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Inter', system-ui, sans-serif; line-height:1.6; color:var(--color-text); background:var(--color-bg); }
+    a { color:inherit; text-decoration:none; }
+
+    .container { max-width:1200px; margin:0 auto; padding:0 var(--spacing-md); }
+
+    header {
+      position:fixed; top:0; width:100%; background:var(--color-white);
+      box-shadow:0 1px 3px rgba(0,0,0,0.1); z-index:100; transition:background 0.3s;
+    }
+    header.scrolled { background:rgba(255,255,255,0.97); backdrop-filter:blur(8px); }
+
+    nav { display:flex; justify-content:space-between; align-items:center; height:80px; }
+    .logo { font-size:1.5rem; font-weight:700; color:var(--color-primary); }
+    .nav-links { display:flex; gap:2.5rem; list-style:none; font-weight:500; }
+    .nav-links a:hover { color:var(--color-primary); }
+    .menu-toggle { display:none; font-size:1.8rem; cursor:pointer; }
+
+    #hero {
+      height:100vh; min-height:700px; display:flex; align-items:center;
+      background:linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); position:relative;
+    }
+    .hero-content { max-width:700px; z-index:2; }
+    .hero-content h1 { font-size:clamp(2.8rem,6vw,4.2rem); line-height:1.1; margin-bottom:var(--spacing-md); color:var(--color-text); }
+    .hero-content p { font-size:1.25rem; color:var(--color-text-light); margin-bottom:2rem; max-width:520px; }
+    .btn {
+      display:inline-block; background:var(--color-primary); color:white;
+      padding:0.9rem 2rem; border-radius:999px; font-weight:600; transition:all 0.3s ease;
+    }
+    .btn:hover { background:var(--color-primary-dark); transform:translateY(-3px); box-shadow:0 10px 25px rgba(37,99,235,0.25); }
+
+    section { padding:var(--spacing-lg) 0; }
+    h2 { font-size:2.5rem; text-align:center; margin-bottom:var(--spacing-lg); color:var(--color-text); }
+
+    .stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:var(--spacing-md); text-align:center; }
+    .stat-item { padding:2rem; background:white; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.06); }
+    .stat-number { font-size:2.8rem; font-weight:700; color:var(--color-primary); margin-bottom:0.5rem; }
+
+    .services-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:1.8rem; }
+    .service-card {
+      background:white; border-radius:16px; padding:2.2rem; box-shadow:0 6px 20px rgba(0,0,0,0.08);
+      transition:all 0.35s ease; border:1px solid var(--color-border);
+    }
+    .service-card:hover { transform:translateY(-12px); box-shadow:0 20px 40px rgba(0,0,0,0.12); border-color:var(--color-primary); }
+    .service-card h3 { margin:1.2rem 0 1rem; font-size:1.4rem; color:var(--color-text); }
+    .service-icon { font-size:2.8rem; color:var(--color-primary); margin-bottom:1rem; }
+
+    .cta-section {
+      background:var(--color-primary); color:white; text-align:center;
+      padding:6rem 2rem; border-radius:24px; margin:var(--spacing-lg) auto; max-width:900px;
+    }
+    .cta-section h2 { color:white; margin-bottom:1.5rem; }
+
+    footer { background:var(--color-text); color:#d1d5db; text-align:center; padding:3rem 1rem; font-size:0.95rem; }
+
+    @media (max-width:768px) {
+      .nav-links { display:none; position:absolute; top:80px; left:0; width:100%; background:white;
+        flex-direction:column; padding:1.5rem; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+      .nav-links.active { display:flex; }
+      .menu-toggle { display:block; }
+      h1 { font-size:2.6rem; } h2 { font-size:2rem; }
+    }
+
+    .message {
+      position:fixed; top:90px; left:50%; transform:translateX(-50%);
+      background:#d1fae5; color:#065f46; padding:1rem 2rem; border-radius:12px;
+      border:1px solid #a7f3d0; box-shadow:0 6px 20px rgba(0,0,0,0.15);
+      z-index:2000; display:none; font-weight:500; min-width:320px; text-align:center;
+    }
+  </style>
+</head>
+<body>
+
+  <header id="header">
+    <nav class="container">
+      <div class="logo">Kashfeet</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#stats">Impact</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="menu-toggle" id="menuToggle">☰</div>
+    </nav>
+  </header>
+
+  <section id="hero">
+    <div class="container hero-content">
+      <h1>Grow Smarter.<br>Scale Faster.</h1>
+      <p>Strategic consulting, digital transformation & reliable business solutions tailored for companies in Lahore and across Pakistan.</p>
+      <a href="contact.html" class="btn">Start a Conversation →</a>
+    </div>
+  </section>
+
+  <section id="stats">
+    <div class="container">
+      <h2>Numbers That Matter</h2>
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-number">150+</div><p>Projects Delivered</p></div>
+        <div class="stat-item"><div class="stat-number">4.8M</div><p>Reach Generated</p></div>
+        <div class="stat-item"><div class="stat-number">92%</div><p>Client Retention</p></div>
+        <div class="stat-item"><div class="stat-number">8+</div><p>Years Experience</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <h2>Core Services</h2>
+      <div class="services-grid">
+        <div class="service-card"><div class="service-icon">⚙️</div><h3>Business Strategy</h3><p>Growth planning, market entry, operational optimization.</p></div>
+        <div class="service-card"><div class="service-icon">💻</div><h3>Digital Solutions</h3><p>Professional websites, custom software, mobile apps — clean & fast.</p></div>
+        <div class="service-card"><div class="service-icon">📈</div><h3>Digital Marketing</h3><p>SEO, Google Ads, social strategy — real leads, measurable ROI.</p></div>
+        <div class="service-card"><div class="service-icon">🛡️</div><h3>IT & Support</h3><p>Cloud migration, cybersecurity basics, team training.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="cta-section">
+      <h2>Ready to Move Your Business Forward?</h2>
+      <p style="font-size:1.2rem; max-width:600px; margin:0 auto 2rem;">
+        Let's discuss how we can help you achieve your goals — no fluff, just results.
+      </p>
+      <a href="contact.html" class="btn" style="background:white; color:var(--color-primary);">Talk to Us Today →</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Kashfeet Solutions. Lahore, Pakistan.<br>
+      <a href="tel:+923xxxxxxxxx">+92 300 123 4567</a> • hello@kashfeet.pk</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('menuToggle').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('active');
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    window.addEventListener('scroll', () => {
+      document.getElementById('header').classList.toggle('scrolled', window.scrollY > 100);
+    });
+  </script>
+</body>
+</html>
