@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You | RazaCorp</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Poppins', sans-serif; display:flex; justify-content:center; align-items:center; height:100vh; background:linear-gradient(135deg,#2563eb,#1e3a8a); color:white; text-align:center; }
+    .container { background:rgba(255,255,255,0.1); padding:50px; border-radius:20px; backdrop-filter:blur(10px); max-width:500px; }
+    h1 { font-size:32px; margin-bottom:20px; }
+    p { margin-bottom:30px; }
+    a { display:inline-block; padding:12px 25px; background:white; color:#1e3a8a; text-decoration:none; border-radius:50px; font-weight:600; transition:0.3s; }
+    a:hover { background:#e0e7ff; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Thank You for Visiting Us!</h1>
+    <p>Your message has been submitted successfully. We appreciate you contacting RazaCorp.</p>
+    <p>Please check your email and sign in for further updates.</p>
+    <a href="index.html">Return to Home</a>
+  </div>
+  <script>
+    const form = document.querySelector("form");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = form.querySelector("input[type='text']").value.trim();
+      const email = form.querySelector("input[type='email']").value.trim();
+      const message = form.querySelector("textarea").value.trim();
+
+      if(name === "" || email === "" || message === ""){
+        alert("Please fill all fields before submitting.");
+        return;
+      }
+
+      if(!email.includes("@") || !email.includes(".")){
+        alert("Please enter a valid email address.");
+        return;
+      }
+
+      alert("Thanks for visiting us! Your message has been submitted successfully.");
+
+      window.location.href = "thankyou.html";
+    });
+  </script>
+</body>
+</html>
