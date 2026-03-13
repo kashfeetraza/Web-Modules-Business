@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blossom — Modern & Minimal Furniture</title>
+    <style>
+      :root{
+        --bg:#a9c8ca;
+        --ink:#0f1a1a;
+        --muted:#4a5b5b;
+        --card:#ffffff;
+        --soft:#eef3f4;
+        --teal:#7fb1b2;
+        --teal-2:#6aa3a5;
+        --black:#0b0f10;
+        --radius:20px;
+        --radius-lg:26px;
+        --shadow:0 10px 25px rgba(0,0,0,.06);
+      }
+      *{box-sizing:border-box}
+      body{
+        margin:0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+        color:var(--ink);
+        background:var(--bg);
+      }
+
+      /* "phone" frame (optional) */
+      .wrap{
+        max-width:430px;
+        margin:0 auto;
+        padding:12px 10px 18px;
+      }
+      .app{
+        border-radius:28px;
+        overflow:hidden;
+        box-shadow:0 25px 60px rgba(0,0,0,.18);
+        background:var(--bg);
+        border:1px solid rgba(255,255,255,.35);
+      }
+
+      /* top bars */
+      .announce{
+        background:var(--black);
+        color:#e9f0f0;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:10px;
+        padding:8px 12px;
+        font-size:12px;
+      }
+      .announce .right{
+        display:flex;
+        align-items:center;
+        gap:10px;
+        white-space:nowrap;
+      }
+      .pill{
+        border:1px solid rgba(255,255,255,.22);
+        color:#e9f0f0;
+        background:rgba(255,255,255,.08);
+        padding:6px 10px;
+        border-radius:999px;
+        font-weight:600;
+        font-size:12px;
+        line-height:1;
+      }
+
+      header{
+        background:#ffffff;
+        padding:12px 12px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:10px;
+        border-bottom:1px solid rgba(15,26,26,.06);
+      }
+      .brand{
+        display:flex;
+        align-items:center;
+        gap:10px;
+        font-weight:700;
+      }
+      .logo{
+        width:28px;height:28px;border-radius:9px;
+        display:grid;place-items:center;
+        background:#0e2526;color:#e8f6f6;
+        font-weight:800;
+        font-size:14px;
+      }
+      .actions{
+        display:flex;
+        align-items:center;
+        gap:10px;
+      }
+      .icon-btn{
+        width:34px;height:34px;border-radius:999px;
+        border:1px solid rgba(15,26,26,.10);
+        background:#fff;
+        display:grid;place-items:center;
+        cursor:pointer;
+      }
+      .cart{
+        font-size:12px;
+        color:rgba(15,26,26,.75);
+        font-weight:600;
+      }
+      .primary{
+        border:none;
+        border-radius:999px;
+        padding:10px 12px;
+        font-weight:700;
+        cursor:pointer;
+        background:#0e2526;
+        color:#f1ffff;
+        font-size:12px;
+      }
+      .menu{
+        width:36px;height:36px;border-radius:999px;
+        border:1px solid rgba(15,26,26,.10);
+        background:#fff;
+        display:grid;place-items:center;
+        cursor:pointer;
+      }
+
+      main{ padding:14px 12px 0; }
+
+      /* hero */
+      .hero{
+        background:var(--teal);
+        border-radius:var(--radius-lg);
+        padding:18px 16px 16px;
+        box-shadow:var(--shadow);
+      }
+      .kicker{
+        letter-spacing:.16em;
+        text-transform:uppercase;
+        font-size:11px;
+        color:rgba(255,255,255,.75);
+        font-weight:700;
+      }
+      .h1{
+        margin:8px 0 8px;
+        font-size:34px;
+        line-height:1.05;
+        color:#e9fbfb;
+        font-weight:800;
+      }
+      .lead{
+        margin:0 0 14px;
+        color:rgba(255,255,255,.78);
+        font-size:13px;
+        line-height:1.55;
+        max-width:34ch;
+      }
+      .cta-row{
+        display:flex;
+        gap:10px;
+        flex-wrap:wrap;
+        margin-bottom:14px;
+      }
+      .btn{
+        border-radius:999px;
+        padding:10px 12px;
+        font-weight:700;
+        font-size:12px;
+        cursor:pointer;
+        border:1px solid rgba(255,255,255,.22);
+        background:rgba(255,255,255,.12);
+        color:#eaffff;
+      }
+      .btn.light{
+        background:#ffffff;
+        color:#0e2526;
+        border:1px solid rgba(255,255,255,.8);
+      }
+      .hero-img{
+        border-radius:18px;
+        overflow:hidden;
+        background:rgba(255,255,255,.18);
+        border:1px solid rgba(255,255,255,.20);
+      }
+      .hero-img img{
+        width:100%;
+        height:230px;
+        object-fit:cover;
+        display:block;
+      }
+
+      /* sections */
+      .section{
+        margin-top:12px;
+        background:var(--card);
+        border-radius:var(--radius-lg);
+        padding:16px;
+        box-shadow:var(--shadow);
+      }
+      .section + .section{ margin-top:12px; }
+
+      .label{
+        text-transform:uppercase;
+        font-size:10px;
+        letter-spacing:.18em;
+        color:rgba(15,26,26,.45);
+        font-weight:800;
+      }
+      .title{
+        margin:8px 0 6px;
+        font-size:26px;
+        line-height:1.15;
+        font-weight:850;
+      }
+      .desc{
+        margin:0 0 12px;
+        color:rgba(15,26,26,.62);
+        font-size:13px;
+        line-height:1.55;
+      }
+      .row{
+        display:flex;
+        align-items:center;
+        gap:10px;
+        flex-wrap:wrap;
+      }
+      .btn-dark{
+        background:#0e2526;
+        border:none;
+        color:#eaffff;
+        padding:10px 12px;
+        border-radius:999px;
+        font-weight:800;
+        font-size:12px;
+        cursor:pointer;
+      }
+      .link{
+        color:#0e2526;
+        font-weight:800;
+        font-size:12px;
+        text-decoration:none;
+      }
+      .link:hover{ text-decoration:underline; }
+
+      .tile{
+        margin-top:10px;
+        background:var(--soft);
+        border-radius:18px;
+        height:130px;
+        border:1px solid rgba(15,26,26,.06);
+        position:relative;
+        overflow:hidden;
+      }
+      .tile .mini{
+        position:absolute;
+        top:10px;left:12px;
+        display:flex;
+        align-items:center;
+        gap:6px;
+        color:rgba(15,26,26,.65);
+        font-weight:800;
+        font-size:12px;
+      }
+      .leaf{
+        width:14px;height:14px;border-radius:4px;
+        background:linear-gradient(135deg,#6ccf9b,#3aa86f);
+        display:inline-block;
+        transform:rotate(-12deg);
+      }
+
+      /* teal offer */
+      .offer{
+        background:var(--teal);
+        color:#eaffff;
+        border-radius:var(--radius-lg);
+        padding:18px 16px;
+        margin-top:12px;
+        box-shadow:var(--shadow);
+      }
+      .offer .label{ color:rgba(255,255,255,.75); }
+      .offer .title{ color:#eaffff; margin-bottom:8px; }
+      .offer .desc{ color:rgba(255,255,255,.78); margin-bottom:12px; }
+      .btn-soft{
+        background:#ffffff;
+        color:#0e2526;
+        border:none;
+        padding:10px 12px;
+        border-radius:999px;
+        font-weight:850;
+        font-size:12px;
+        cursor:pointer;
+      }
+
+      .photo{
+        margin-top:12px;
+        border-radius:22px;
+        overflow:hidden;
+        box-shadow:var(--shadow);
+        border:1px solid rgba(255,255,255,.35);
+      }
+      .photo img{
+        width:100%;
+        height:330px;
+        object-fit:cover;
+        display:block;
+      }
+
+      /* footer */
+      footer{
+        background:#ffffff;
+        margin-top:12px;
+        padding:18px 14px 14px;
+        border-top:1px solid rgba(15,26,26,.06);
+      }
+      .footer-grid{
+        display:grid;
+        grid-template-columns: 1.2fr .8fr;
+        gap:14px;
+      }
+      .footer-title{
+        font-weight:900;
+        margin:0 0 6px;
+        font-size:13px;
+      }
+      .footer-text{
+        margin:0;
+        color:rgba(15,26,26,.62);
+        font-size:12px;
+        line-height:1.55;
+      }
+      .footer-links a{
+        display:block;
+        color:rgba(15,26,26,.72);
+        text-decoration:none;
+        font-weight:700;
+        font-size:12px;
+        margin:6px 0;
+      }
+      .footer-links a:hover{ text-decoration:underline; }
+
+      .footer-bottom{
+        margin-top:16px;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:14px;
+      }
+      .mini-links a{
+        display:block;
+        color:rgba(15,26,26,.72);
+        text-decoration:none;
+        font-weight:700;
+        font-size:12px;
+        margin:6px 0;
+      }
+      .newsletter{
+        display:flex;
+        flex-direction:column;
+        gap:8px;
+      }
+      .input{
+        width:100%;
+        padding:11px 12px;
+        border-radius:999px;
+        border:1px solid rgba(15,26,26,.14);
+        outline:none;
+        font-size:12px;
+      }
+      .subscribe{
+        align-self:flex-start;
+        background:#0e2526;
+        color:#eaffff;
+        border:none;
+        padding:10px 14px;
+        border-radius:999px;
+        font-weight:900;
+        font-size:12px;
+        cursor:pointer;
+      }
+
+      .legal{
+        margin-top:16px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:10px;
+        color:rgba(15,26,26,.55);
+        font-size:11px;
+      }
+      .social{
+        display:flex;
+        gap:12px;
+      }
+      .social a{
+        color:rgba(15,26,26,.65);
+        text-decoration:none;
+        font-weight:800;
+        font-size:11px;
+      }
+      .social a:hover{ text-decoration:underline; }
+
+      /* tiny svg icons */
+      svg{ display:block }
+      .sr{ position:absolute; left:-9999px; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="app">
+        <div class="announce">
+          <div>Free shipping over $98 • 30-day returns</div>
+          <div class="right">
+            <span style="opacity:.9">English</span>
+            <span class="pill">Get in touch</span>
+          </div>
+        </div>
+
+        <header>
+          <div class="brand">
+            <div class="logo">B</div>
+            <div>Blossom</div>
+          </div>
+
+          <div class="actions">
+            <button class="icon-btn" aria-label="Search">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M10.5 18.5a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" stroke="#0e2526" stroke-width="2"/>
+                <path d="M16.5 16.5 21 21" stroke="#0e2526" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <button class="icon-btn" aria-label="Favorites">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M12 21s-7-4.6-9.2-9.2C1.3 8.7 3.2 6 6.2 6c1.7 0 3 .9 3.8 2 0.8-1.1 2.1-2 3.8-2 3 0 4.9 2.7 3.4 5.8C19 16.4 12 21 12 21Z" stroke="#0e2526" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+            </button>
+
+            <div class="cart">Cart (0)</div>
+            <button class="primary">Book now</button>
+
+            <button class="menu" aria-label="Menu">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M5 7h14M5 12h14M5 17h14" stroke="#0e2526" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+        </header>
+
+        <main>
+          <section class="hero">
+            <div class="kicker">Modern &amp; minimal furniture</div>
+            <h1 class="h1">Make office life feel lighter.</h1>
+            <p class="lead">
+              Curated seating, lighting, and décor with a calm, modern look—built for focus,
+              comfort, and clean aesthetics.
+            </p>
+
+            <div class="cta-row">
+              <button class="btn light">Explore Collection</button>
+              <button class="btn">Watch Video</button>
+            </div>
+
+            <div class="hero-img">
+              <img
+                alt="Modern office lounge"
+                src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=80"
+              />
+            </div>
+          </section>
+
+          <section class="section">
+            <div class="label">New arrivals</div>
+            <div class="title">Get work done in style.</div>
+            <p class="desc">
+              Clean lines, soft materials, and ergonomic comfort. Upgrade your workspace with pieces
+              that look great and feel even better.
+            </p>
+            <div class="row">
+              <button class="btn-dark">Shop chair</button>
+              <a class="link" href="#">Learn more →</a>
+            </div>
+
+            <div class="tile" style="margin-top:14px">
+              <div class="mini"><span class="leaf"></span> Modern chair</div>
+            </div>
+
+            <div class="tile">
+              <div class="mini"><span class="leaf"></span> Minimal decor</div>
+            </div>
+          </section>
+
+          <section class="section">
+            <div class="label">Curated sets</div>
+            <div class="title">Pick a set that fits.</div>
+            <p class="desc">
+              Choose from warm neutrals, cool tones, or bold accents. Mix and match chairs,
+              lamps, tables, and décor for a cohesive look.
+            </p>
+            <div class="row">
+              <button class="btn-dark" style="background:#0e2526;color:#eaffff;">View sets</button>
+              <a class="link" href="#">Pricing →</a>
+            </div>
+          </section>
+
+          <section class="offer">
+            <div class="label">Limited offer</div>
+            <div class="title">Design help, included.</div>
+            <p class="desc">
+              Tell us your space and style—get a free layout suggestion and product shortlist.
+              Simple, fast, and tailored to your needs.
+            </p>
+            <button class="btn-soft">Request a mockup</button>
+          </section>
+
+          <div class="photo">
+            <img
+              alt="Chair in spotlight"
+              src="https://images.unsplash.com/photo-1456327102063-fb5054efe647?auto=format&fit=crop&w=1200&q=80"
+            />
+          </div>
+
+          <footer>
+            <div class="footer-grid">
+              <div>
+                <p class="footer-title">We craft calm workspaces</p>
+                <p class="footer-text">
+                  Minimal furniture and décor with premium finishes, designed to support focus and comfort.
+                </p>
+              </div>
+              <div class="footer-links">
+                <p class="footer-title">Links</p>
+                <a href="#">Collections</a>
+                <a href="#">Shop</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+              </div>
+            </div>
+
+            <div class="footer-bottom">
+              <div>
+                <p class="footer-title">Company</p>
+                <div class="mini-links">
+                  <a href="#">Shipping</a>
+                  <a href="#">Returns</a>
+                  <a href="#">Privacy</a>
+                  <a href="#">Terms</a>
+                </div>
+              </div>
+
+              <div class="newsletter">
+                <p class="footer-title">Newsletter</p>
+                <p class="footer-text">Get product drops + workspace tips. No spam.</p>
+                <input class="input" type="email" placeholder="Email address" />
+                <button class="subscribe">Subscribe</button>
+              </div>
+            </div>
+
+            <div class="legal">
+              <div>© 2026 Blossom. All rights reserved.</div>
+              <div class="social">
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+                <a href="#">Dribbble</a>
+              </div>
+            </div>
+          </footer>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
